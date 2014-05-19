@@ -6,6 +6,6 @@ class StaticPagesController < ApplicationController
   end
 
   def check_auth!
-    redirect_to 'welcome' unless user_logged_in?
+    redirect_to '/welcome' unless user_signed_in?
   end
 end
