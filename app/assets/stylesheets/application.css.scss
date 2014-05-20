@@ -17,8 +17,8 @@
 @import "bootstrap";
 @font-face {
   font-family: 'Waltograph';
-  src:url('waltograph42.otf');
-  src:url('waltographUI.ttf') format('truetype');
+  src: font-url('waltograph42.otf');
+  src: font-url('waltographUI.ttf') format('truetype');
   font-weight: normal;
   font-style: normal;
 }
