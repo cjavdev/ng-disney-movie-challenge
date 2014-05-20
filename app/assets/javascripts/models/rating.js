@@ -1,3 +1,4 @@
-DisneyMovieChallenge.Models.Rating = Backbone.Model.extend({
+/*globals App, Backbone */
+App.Models.Rating = Backbone.Model.extend({
 
 });

@@ -1,6 +1,5 @@
-DisneyMovieChallenge.Collections.Ratings = Backbone.Collection.extend({
+/*globals App, Backbone */
+App.Collections.Ratings = Backbone.Collection.extend({
   url: 'api/ratings',
-
-  model: DisneyMovieChallenge.Models.Rating
-
+  model: App.Models.Rating
 });

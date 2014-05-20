@@ -16,8 +16,9 @@
 //= require bootstrap
 //= require underscore
 //= require backbone
+//= require moment
 //= require react
-//= require disney_movie_challenge
+//= require app
 //= require_tree ../templates
 //= require_tree ./models
 //= require_tree ./collections

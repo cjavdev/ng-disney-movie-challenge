@@ -1,3 +1,4 @@
-DisneyMovieChallenge.Models.Movie = Backbone.Model.extend({
+/*globals App, Backbone */
+App.Models.Movie = Backbone.Model.extend({
 
 });
