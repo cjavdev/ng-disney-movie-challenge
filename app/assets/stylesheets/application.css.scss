@@ -15,3 +15,13 @@
  */
 
 @import "bootstrap";
+@font-face {
+  font-family: 'Waltograph';
+  src:url('waltograph42.otf');
+  src:url('waltographUI.ttf') format('truetype');
+  font-weight: normal;
+  font-style: normal;
+}
+h1, h2, h3 {
+  font-family: 'Waltograph';
+}
