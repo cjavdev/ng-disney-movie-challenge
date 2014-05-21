@@ -13,7 +13,7 @@ App.Models.Movie = Backbone.Model.extend({
 
   parse: function (data) {
     if(data.rating) {
-      this.rating().set(data.rating);
+      this.rating().set(data.rating, { parse: true });
       delete data.rating;
     }
 

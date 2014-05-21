@@ -22,11 +22,13 @@ class OmniauthCallbacksController < Devise::OmniauthCallbacksController
     when 'Facebook'
       uid = access_token['uid']
       email = access_token[:info][:email]
-      auth_attr = { uid: uid,
-                    token: access_token['credentials']['token'],
-                    secret: nil,
-                    name: access_token[:info][:name],
-                    link: access_token[:info][:urls]['Facebook']
+      auth_attr = {
+        uid: uid,
+        token: access_token['credentials']['token'],
+        secret: nil,
+        name: access_token[:info][:name],
+        link: access_token[:info][:urls]['Facebook'],
+        image: access_token[:info][:image]
       }
     else
       raise 'Provider #{provider} not handled'
@@ -49,7 +51,7 @@ class OmniauthCallbacksController < Devise::OmniauthCallbacksController
       auth = user.authorizations.build(provider: provider)
       user.authorizations << auth
     end
-    auth.update_attributes auth_attr
+    auth.update_attributes(auth_attr)
 
     user
   end

@@ -1,3 +1,4 @@
+/** @jsx React.DOM */
 /*globals window, app, $ */
 "use strict";
 
@@ -7,7 +8,8 @@ window.App = {
   Views: {},
   Routers: {},
   initialize: function () {
-    return;
+    var router = new App.Routers.Router()
+    Backbone.history.start();
   }
 };
 

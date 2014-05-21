@@ -2,8 +2,11 @@ class Api::RatingsController < ApplicationController
   wrap_parameters :movie_rating, include: [:rating, :movie_id]
 
   def index
-    @ratings = Rating.all
-    render json: @ratings
+    @ratings = Rating
+      .includes(:movie, user: :authorizations)
+      .order(created_at: :desc)
+      .limit(200)
+    render :index
   end
 
   def create

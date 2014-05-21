@@ -29,6 +29,18 @@ class User < ActiveRecord::Base
   has_many :ratings
   has_many :movies, through: :ratings
 
+  def fb_auth
+    @fb_auth ||= authorizations.where(provider: :Facebook).first
+  end
+
+  def name
+    fb_auth.name
+  end
+
+  def image
+    fb_auth.image
+  end
+
   def rating_of(movie)
     @rating_of ||= {}
     @rating_of.fetch(movie.id, ratings.find_by_movie_id(movie.id))

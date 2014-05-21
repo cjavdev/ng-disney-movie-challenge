@@ -88,14 +88,3 @@ var StatList = React.createClass({
     );
   }
 });
-
-App.movies = new App.Collections.Movies();
-
-App.movies.fetch().then(function () {
-  React.renderComponent(
-    <MovieList movies={App.movies}/>, 
-    document.getElementById("movie-list")
-  );
-});
-
-React.renderComponent(<StatList />, document.getElementById("stat-list"));
