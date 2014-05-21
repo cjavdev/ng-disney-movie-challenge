@@ -33,4 +33,8 @@ class User < ActiveRecord::Base
     @rating_of ||= {}
     @rating_of.fetch(movie.id, ratings.find_by_movie_id(movie.id))
   end
+
+  def stats
+    { rating_count: ratings.count, movie_count: Movie.count }
+  end
 end

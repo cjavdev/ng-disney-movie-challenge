@@ -7,15 +7,17 @@ var MovieListItem = App.Views.MovieListItem = React.createClass({
     var movie = this.props.movie;
 
     return (
-      <li className="list-group-item">
+      <a className="list-group-item">
         <h4 className="list-group-item-heading">
           {movie.get('name')}
         </h4>
+        <div className="pull-right">
+          <Rating rating={movie.rating()} movie_id={movie.id} />
+        </div>
         <p className="list-group-item-text">
           {moment(movie.get('released_at')).year()}
-          <Rating rating={movie.rating()} movie_id={movie.id} />
         </p>
-      </li>
+      </a>
     );
   }
 });
@@ -28,7 +30,7 @@ var Rating = App.Views.Rating = React.createClass({
 
   render: function () {
     return (
-      <input type="number" value={this.state.rating} data-movie-id={this.state.movie_id} className="rating"></input>
+      <input type="number" data-max="5" data-min="1" value={this.state.rating} data-movie-id={this.state.movie_id} className="rating pull-right"></input>
     );
   },
 });
@@ -36,7 +38,7 @@ var Rating = App.Views.Rating = React.createClass({
 var MovieList = App.Views.MovieIndex = React.createClass({
   componentDidMount: function () {
     $('.rating').rating();
-    $('ul').on('change', '.rating', function (event) {
+    $('.list-group').on('change', '.rating', function (event) {
       var newRating = event.currentTarget.value,
         movieId = $(event.currentTarget).data('movie-id');
 
@@ -50,11 +52,33 @@ var MovieList = App.Views.MovieIndex = React.createClass({
     return (
       <div className="movie-list">
         <h1>Movies</h1>
-        <ul className="list-group">
+        <div className="list-group">
           {movies.map(function (movie) {
             return <MovieListItem movie={movie} />;
           })}
-        </ul>
+        </div>
+      </div>
+    );
+  }
+});
+
+var StatList = React.createClass({
+  getInitialState: function () {
+    var data = JSON.parse($('#user-stats').html());
+    var complete = 100 * data.rating_count / data.movie_count;
+    return { complete: complete };
+  },
+
+  render: function () {
+    console.log(this.state);
+    return (
+      <div>
+        <h2>Progress</h2>
+        <div className="progress progress-striped active">
+          <div className="progress-bar" role="progressbar" aria-valuenow={this.state.complete} aria-valuemin="0" aria-valuemax="100" style={{ width: this.state.complete }}>
+            <span className="sr-only">{this.state.complete + '% Complete'}</span>
+          </div>
+        </div>
       </div>
     );
   }
@@ -68,3 +92,4 @@ App.movies.fetch().then(function () {
     document.getElementById("movie-list")
   );
 });
+React.renderComponent(<StatList />, document.getElementById("stat-list"));
