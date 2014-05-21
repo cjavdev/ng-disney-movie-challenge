@@ -66,7 +66,11 @@ var StatList = React.createClass({
   getInitialState: function () {
     var data = JSON.parse($('#user-stats').html());
     var complete = 100 * data.rating_count / data.movie_count;
-    return { complete: complete };
+    return {
+      complete: complete,
+      ratings: data.rating_count,
+      movies: data.movie_count
+    };
   },
 
   render: function () {
@@ -79,6 +83,7 @@ var StatList = React.createClass({
             <span className="sr-only">{this.state.complete + '% Complete'}</span>
           </div>
         </div>
+        You've watched {this.state.ratings} out of {this.state.movies} Disney Movies!
       </div>
     );
   }
@@ -92,4 +97,5 @@ App.movies.fetch().then(function () {
     document.getElementById("movie-list")
   );
 });
+
 React.renderComponent(<StatList />, document.getElementById("stat-list"));
