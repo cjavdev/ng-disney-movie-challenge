@@ -18,7 +18,7 @@ var UserImage = React.createClass({
   render: function () {
     var user = this.props.user;
     return (
-      <img src={user.get('image')} />
+      <img src={user.get('image')} height="60px" />
     );
   },
 })

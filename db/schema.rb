@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20140521181300) do
+ActiveRecord::Schema.define(version: 20140521232329) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -26,7 +26,7 @@ ActiveRecord::Schema.define(version: 20140521181300) do
     t.string   "link"
     t.datetime "created_at"
     t.datetime "updated_at"
-    t.string   "image"
+    t.string   "image",      default: "https://24.media.tumblr.com/25db9eeb2bf50d913fe466b038355192/tumblr_n5xmqi39sv1soax2qo1_250.gif"
   end
 
   create_table "movies", force: true do |t|
