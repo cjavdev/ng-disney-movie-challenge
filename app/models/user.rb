@@ -22,8 +22,15 @@ class User < ActiveRecord::Base
   # Include default devise modules. Others available are:
   # :confirmable, :lockable, :timeoutable and :omniauthable
   devise :database_authenticatable, :registerable,
-         :recoverable, :rememberable, :trackable, :validatable
+         :recoverable, :rememberable, :trackable, :validatable,
+         :omniauthable
 
+  has_many :authorizations
   has_many :ratings
   has_many :movies, through: :ratings
+
+  def rating_of(movie)
+    @rating_of ||= {}
+    @rating_of.fetch(movie.id, ratings.find_by_movie_id(movie.id))
+  end
 end

@@ -13,5 +13,6 @@
 
 class Movie < ActiveRecord::Base
   validates :name, :released_at, :duration, presence: true
+
   has_many :ratings
 end

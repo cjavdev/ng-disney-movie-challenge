@@ -13,30 +13,58 @@ var MovieListItem = App.Views.MovieListItem = React.createClass({
         </h4>
         <p className="list-group-item-text">
           {moment(movie.get('released_at')).year()}
+          <Rating rating={movie.rating()} movie_id={movie.id} />
         </p>
       </li>
     );
   }
 });
 
-var MovieList = App.Views.MovieIndex = React.createClass({
+var Rating = App.Views.Rating = React.createClass({
+  getInitialState: function() {
+    this.rating = this.props.rating;
+    return { rating: this.rating.get('rating'), movie_id: this.props.movie_id };
+  },
+
   render: function () {
-    var movie = this.props.movies.first();
+    return (
+      <input type="number" value={this.state.rating} data-movie-id={this.state.movie_id} className="rating"></input>
+    );
+  },
+});
+
+var MovieList = App.Views.MovieIndex = React.createClass({
+  componentDidMount: function () {
+    $('.rating').rating();
+    $('ul').on('change', '.rating', function (event) {
+      var newRating = event.currentTarget.value,
+        movieId = $(event.currentTarget).data('movie-id');
+
+      var movie = App.movies.get(movieId);
+      movie.rating().save({ rating: newRating });
+    });
+  },
+
+  render: function () {
+    var movies = this.props.movies;
     return (
       <div className="movie-list">
         <h1>Movies</h1>
         <ul className="list-group">
-        {movies.map(function (movie) {
-          return <MovieListItem movie={movie} />;
-        })}
+          {movies.map(function (movie) {
+            return <MovieListItem movie={movie} />;
+          })}
         </ul>
       </div>
     );
   }
 });
 
-var movies = new App.Collections.Movies();
+App.movies = new App.Collections.Movies();
 
-movies.fetch().then(function () {
-  React.renderComponent(<MovieList movies={movies}/>, document.getElementById("movie-list"));
+App.movies.fetch().then(function () {
+  React.renderComponent(
+    <MovieList movies={App.movies}/>, 
+    document.getElementById("movie-list")
+  );
 });

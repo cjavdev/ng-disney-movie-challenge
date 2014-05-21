@@ -10,11 +10,15 @@
  * defined in the other CSS/SCSS files in this directory. It is generally better to create a new
  * file per style scope.
  *
+ *= require bootstrap-social
+ *= require disneymc-icons
  *= require_tree .
  *= require_self
  */
 
-@import "bootstrap";
+@import 'bootstrap';
+@import "font-awesome";
+
 @font-face {
   font-family: 'Waltograph';
   src: font-url('waltograph42.otf');
@@ -22,6 +26,7 @@
   font-weight: normal;
   font-style: normal;
 }
+
 h1, h2, h3 {
   font-family: 'Waltograph';
 }

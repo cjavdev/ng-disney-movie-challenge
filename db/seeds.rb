@@ -11,7 +11,7 @@ require 'csv'
 movies = CSV.parse(File.read('db/disney_movie_list.csv'))
 movies.each do |(name, year, duration, rating, _)|
   puts "Creating: #{ name } from #{ year } lasts #{ duration } mins. and is rated #{ rating }"
-  year += "-01-01" if year.length == 4
+  year += '-01-01' if year.length == 4
   next if Movie.exists?(name: name)
 
   Movie.create!(
