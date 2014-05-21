@@ -2,7 +2,7 @@ class Api::RatingsController < ApplicationController
   wrap_parameters :movie_rating, include: [:rating, :movie_id]
 
   def index
-    @ratings = current_user.ratings
+    @ratings = Rating.all
     render json: @ratings
   end
 
