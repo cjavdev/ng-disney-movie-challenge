@@ -2,7 +2,7 @@
 /*globals App, React */
 "use strict";
 
-var Rating = App.Views.Rating = React.createClass({
+var RatingListItem = React.createClass({
   render: function () {
     var rating = this.props.rating;
     return (
@@ -14,7 +14,7 @@ var Rating = App.Views.Rating = React.createClass({
   }
 });
 
-var UserImage = App.Views.RatingUser = React.createClass({
+var UserImage = React.createClass({
   render: function () {
     var user = this.props.user;
     return (
@@ -23,7 +23,7 @@ var UserImage = App.Views.RatingUser = React.createClass({
   },
 })
 
-var RatingFeed = App.Views.RatingFeed = React.createClass({
+var RatingFeed = React.createClass({
   componentDidMount: function () {
     // $('.list-group').on('change', '.rating', function (event) {
     //   var newRating = event.currentTarget.value,

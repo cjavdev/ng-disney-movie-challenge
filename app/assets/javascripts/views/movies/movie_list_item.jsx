@@ -12,7 +12,7 @@ var MovieListItem = App.Views.MovieListItem = React.createClass({
           {movie.get('name')}
         </h4>
         <div className="pull-right">
-          <Rating rating={movie.rating()} movie_id={movie.id} />
+          <Rating rating={movie.rating()} movie={movie} />
         </div>
         <p className="list-group-item-text">
           {moment(movie.get('released_at')).year()}
@@ -22,10 +22,11 @@ var MovieListItem = App.Views.MovieListItem = React.createClass({
   }
 });
 
-var Rating = App.Views.Rating = React.createClass({
+var Rating = React.createClass({
   getInitialState: function() {
     this.rating = this.props.rating;
-    return { rating: this.rating.get('rating'), movie_id: this.props.movie_id };
+    var value = this.rating.get('rating');
+    return { rating: value, movie_id: this.props.movie_id };
   },
 
   render: function () {
@@ -35,7 +36,7 @@ var Rating = App.Views.Rating = React.createClass({
   },
 });
 
-var MovieList = App.Views.MovieIndex = React.createClass({
+var MovieList = React.createClass({
   componentDidMount: function () {
     $('.rating').rating();
     $('.list-group').on('change', '.rating', function (event) {

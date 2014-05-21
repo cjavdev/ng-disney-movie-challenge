@@ -26,7 +26,7 @@ class User < ActiveRecord::Base
          :omniauthable
 
   has_many :authorizations
-  has_many :ratings
+  has_many :ratings, dependent: :destroy
   has_many :movies, through: :ratings
 
   def fb_auth
