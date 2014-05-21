@@ -40,7 +40,7 @@ var RatingFeed = React.createClass({
       <div className="ratings">
         <div className="list-group">
           {ratings.map(function (rating) {
-            return <Rating rating={rating} />;
+            return <RatingListItem rating={rating} />;
           })}
         </div>
       </div>
