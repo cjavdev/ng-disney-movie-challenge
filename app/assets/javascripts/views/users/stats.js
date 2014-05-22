@@ -1,6 +1,5 @@
-/** @jsx React.DOM */
 /*globals App, React */
-"use strict";
+'use strict';
 
 var StatList = React.createClass({
   getInitialState: function () {

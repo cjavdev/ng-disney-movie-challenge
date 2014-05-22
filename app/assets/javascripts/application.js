@@ -13,12 +13,10 @@
 //= require jquery
 //= require jquery_ujs
 //= require bootstrap-rating-input
-//= require turbolinks
 //= require bootstrap
 //= require underscore
 //= require backbone
 //= require moment
-//= require react
 //= require app
 //= require_tree ../templates
 //= require_tree ./models

@@ -1,6 +1,5 @@
-/** @jsx React.DOM */
 /*globals window, app, $ */
-"use strict";
+'use strict';
 
 window.App = {
   Models: {},
@@ -8,7 +7,9 @@ window.App = {
   Views: {},
   Routers: {},
   initialize: function () {
-    var router = new App.Routers.Router()
+    var router = new App.Routers.Router({
+      $rootEl: $('#main')
+    });
     Backbone.history.start();
   }
 };
