@@ -2,27 +2,6 @@
 /*globals App, React */
 "use strict";
 
-var RatingListItem = React.createClass({
-  render: function () {
-    var rating = this.props.rating;
-    return (
-      <a className="list-group-item">
-        <UserImage user={rating.user()} />
-        {rating.user().get('name')} watched {rating.get('movie_name')}
-      </a>
-    );
-  }
-});
-
-var UserImage = React.createClass({
-  render: function () {
-    var user = this.props.user;
-    return (
-      <img src={user.get('image')} height="60px" />
-    );
-  },
-})
-
 var RatingFeed = React.createClass({
   componentDidMount: function () {
     // $('.list-group').on('change', '.rating', function (event) {
