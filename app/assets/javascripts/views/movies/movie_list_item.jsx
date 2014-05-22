@@ -3,11 +3,19 @@
 "use strict";
 
 var MovieListItem = App.Views.MovieListItem = React.createClass({
+  handleClick: function () {
+    console.log(this.props);
+    React.renderComponent(
+      <MovieDetail movie={this.props.movie} />,
+      document.getElementById('movie-detail')
+    );
+  },
+
   render: function () {
     var movie = this.props.movie;
 
     return (
-      <a className="list-group-item">
+      <a onClick={this.handleClick} className="list-group-item">
         <h4 className="list-group-item-heading">
           {movie.get('name')}
         </h4>

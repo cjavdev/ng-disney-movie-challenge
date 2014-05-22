@@ -6,7 +6,7 @@ var Rating = React.createClass({
   getInitialState: function() {
     this.rating = this.props.rating;
     var value = this.rating.get('rating');
-    return { rating: value, movie_id: this.props.movie_id };
+    return { rating: value, movie_id: this.props.movie.id };
   },
 
   render: function () {
