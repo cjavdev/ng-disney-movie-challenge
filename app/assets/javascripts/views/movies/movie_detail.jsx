@@ -7,6 +7,7 @@ var MovieDetail = React.createClass({
     return (
       <div>
         <h2>{this.props.movie.get('name')}</h2>
+        <p><strong>Duration:</strong> {this.props.movie.get('duration')} min</p>
         <p><strong>Released:</strong> {moment(this.props.movie.get('released_at')).fromNow()}</p>
         <p><strong>Average Rating:</strong> {this.props.movie.get('avg_rating')}</p>
         <p>
