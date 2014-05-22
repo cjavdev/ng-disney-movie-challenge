@@ -1,5 +1,2 @@
-<a className="list-group-item">
-  <UserImage user={rating.user()} />
-  {rating.user().get('name')} watched
-  <a onClick={this.handleMovieClick}>{rating.get('movie_name')}</a>
-</a>
+<img src="<%= user.get('image') %>" />
+<%= user.get('name') %> watched <%= rating.get('movie_name') %>

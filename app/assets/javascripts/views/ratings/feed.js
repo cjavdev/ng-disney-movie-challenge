@@ -4,34 +4,38 @@
 App.Views.RatingFeed = Backbone.View.extend({
   template: JST['ratings/feed'],
 
+  initialize: function () {
+    this._subviews = [];
+    this.listenTo(this.collection, 'sync', this.render);
+  },
+
   render: function () {
     var content = this.template();
     this.$el.html(content);
+    this.renderRatings();
     return this;
   },
-});
 
-// var RatingFeed = React.createClass({
-//   componentDidMount: function () {
-//     // $('.list-group').on('change', '.rating', function (event) {
-//     //   var newRating = event.currentTarget.value,
-//     //     movieId = $(event.currentTarget).data('movie-id');
-//     //
-//     //   var movie = App.movies.get(movieId);
-//     //   movie.rating().save({ rating: newRating });
-//     // });
-//   },
-//
-//   render: function () {
-//     var ratings = this.props.ratings;
-//     return (
-//       <div className="ratings">
-//         <div className="list-group">
-//           {ratings.map(function (rating) {
-//             return <RatingListItem rating={rating} />;
-//           })}
-//         </div>
-//       </div>
-//     );
-//   }
-// });
+  renderRatings: function () {
+    this.removeSubviews();
+    this.collection.each(function (rating) {
+      var view = new App.Views.RatingFeedItem({
+        model: rating
+      });
+
+      this._subviews.push(view);
+      this.$('#rating-list').append(view.render().$el);
+    }, this);
+  },
+
+  removeSubviews: function () {
+    this._subviews.forEach(function (view) {
+      view.remove();
+    });
+  },
+
+  remove: function () {
+    this.removeSubviews();
+    Backbone.View.prototype.remove.call(this);
+  }
+});

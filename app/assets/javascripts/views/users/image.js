@@ -1,4 +1,4 @@
-/*globals App, React */
+/*globals App, Backbone, JST */
 'use strict';
 
 App.Views.UserImage = Backbone.View.extend({
@@ -8,14 +8,5 @@ App.Views.UserImage = Backbone.View.extend({
     var content = this.template();
     this.$el.html(content);
     return this;
-  },
+  }
 });
-
-// var UserImage = React.createClass({
-//   render: function () {
-//     var user = this.props.user;
-//     return (
-//       <img src={user.get('image')} height="60px" />
-//     );
-//   },
-// });

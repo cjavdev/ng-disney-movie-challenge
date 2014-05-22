@@ -4,6 +4,8 @@
 App.Routers.Router = Backbone.Router.extend({
   initialize: function (options) {
     this.$rootEl = options.$rootEl;
+
+    // TODO: bootstrap these.
     App.movies = new App.Collections.Movies();
     App.movies.fetch();
     App.ratings = new App.Collections.Ratings();
@@ -14,7 +16,7 @@ App.Routers.Router = Backbone.Router.extend({
     '': 'index',
     '_=_': 'index',
     'feed': 'feed',
-    ':id': 'show'
+    'movie/:id': 'showMovie'
   },
 
   index: function () {
@@ -25,9 +27,10 @@ App.Routers.Router = Backbone.Router.extend({
     this._swap(view);
   },
 
-  show: function (id) {
+  showMovie: function (id) {
     var view = new App.Views.MovieList({
-      collection: App.movies
+      collection: App.movies,
+      currentMovieId: id
     });
 
     this._swap(view);

@@ -4,9 +4,16 @@
 App.Views.MovieList = Backbone.View.extend({
   template: JST['movies/list'],
 
-  initialize: function () {
+  initialize: function (options) {
     this._subviews = [];
+    this.currentMovieId = options.currentMovieId;
     this.listenTo(this.collection, 'sync', this.render);
+    this.listenTo(this.collection, 'pickMovie', this.pickMovie);
+  },
+
+  pickMovie: function (movieId) {
+    this.currentMovieId = movieId;
+    this.renderCurrentMovie();
   },
 
   render: function () {
@@ -14,7 +21,21 @@ App.Views.MovieList = Backbone.View.extend({
     var content = this.template();
     this.$el.html(content);
     this.renderSubviews();
+    this.renderCurrentMovie();
     return this;
+  },
+
+  renderCurrentMovie: function () {
+    if(!this.currentMovieId) {
+      return;
+    }
+
+    var view = new App.Views.MovieDetail({
+      model: this.collection.get(this.currentMovieId)
+    });
+
+    this._subviews.push(view);
+    this.$('#movie-detail').html(view.render().$el);
   },
 
   renderSubviews: function () {
@@ -36,32 +57,5 @@ App.Views.MovieList = Backbone.View.extend({
   remove: function () {
     this.removeSubviews();
     Backbone.View.prototype.remove.call(this);
-  },
+  }
 });
-
-// var MovieList = React.createClass({
-//   componentDidMount: function () {
-//     $('.rating').rating();
-//     $('.list-group').on('change', '.rating', function (event) {
-//       var newRating = event.currentTarget.value,
-//         movieId = $(event.currentTarget).data('movie-id');
-//
-//       var movie = App.movies.get(movieId);
-//       movie.rating().save({ rating: newRating });
-//     });
-//   },
-//
-//   render: function () {
-//     var movies = this.props.movies;
-//     return (
-//       <div className="movie-list">
-//         <h1>Movies</h1>
-//         <div className="list-group">
-//           {movies.map(function (movie) {
-//             return <MovieListItem movie={movie} />;
-//           })}
-//         </div>
-//       </div>
-//     );
-//   }
-// });

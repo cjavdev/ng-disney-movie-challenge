@@ -14,6 +14,7 @@ gem 'omniauth'
 gem 'omniauth-facebook'
 gem 'uuidtools'
 gem 'rails', '4.1.0'
+gem 'rails_12factor', group: :production
 gem 'sass-rails', '~> 4.0.3'
 gem 'sdoc', '~> 0.4.0',          group: :doc
 gem 'spring',        group: :development

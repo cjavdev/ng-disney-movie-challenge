@@ -7,7 +7,7 @@ App.Views.MickeyRating = Backbone.View.extend({
 
   initialize: function () {
     this.rating = this.model.get('rating');
-    this.listenTo(this.model, 'change:rating', this.render);
+    this.listenTo(this.model, 'change:rating sync', this.render);
   },
 
   events: {
@@ -37,7 +37,7 @@ App.Views.MickeyRating = Backbone.View.extend({
     this.model.set('rating', $hoveredStar.data('value'));
   },
 
-  starExit: function (event) {
+  starExit: function () {
     this.model.set('rating', this.rating);
   }
 });
