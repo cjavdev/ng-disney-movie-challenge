@@ -4,7 +4,6 @@
 
 var MovieListItem = App.Views.MovieListItem = React.createClass({
   handleClick: function () {
-    console.log(this.props);
     React.renderComponent(
       <MovieDetail movie={this.props.movie} />,
       document.getElementById('movie-detail')
