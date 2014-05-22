@@ -2,7 +2,14 @@
   <%= current_user.stats.to_json.html_safe %>
 </script>
 
+<script type="text/javascript" charset="utf-8">
+  $(function () {
+    window.App.initialize();
+  });
+</script>
+
 <nav class="navbar navbar-default" role="navigation">
+
   <div class="container-fluid">
     <!-- Brand and toggle get grouped for better mobile display -->
     <div class="navbar-header">

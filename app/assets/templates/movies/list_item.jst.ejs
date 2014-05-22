@@ -1,0 +1,9 @@
+<h4 class="list-group-item-heading">
+  <%= movie.escape('name') %>
+</h4>
+<div class="pull-right mcrating">
+  <Rating rating={movie.rating()} movie={movie} />
+</div>
+<p class="list-group-item-text">
+  <%= moment(movie.get('released_at')).year() %>
+</p>

@@ -1,16 +1,43 @@
-/*globals App, React */
-"use strict";
+/*globals App, Backbone, JST */
+'use strict';
 
-var Rating = React.createClass({
-  getInitialState: function() {
-    this.rating = this.props.rating;
-    var value = this.rating.get('rating');
-    return { rating: value, movie_id: this.props.movie.id };
+App.Views.MickeyRating = Backbone.View.extend({
+  className: 'mcrating pull-right',
+  template: JST['ratings/rating'],
+
+  initialize: function () {
+    this.rating = this.model.get('rating');
+    this.listenTo(this.model, 'change:rating', this.render);
+  },
+
+  events: {
+    'mouseover .rating-input > span': 'starEnter',
+    'mouseleave .rating-input': 'starExit',
+    'click .rating-input > span': 'starChange'
   },
 
   render: function () {
-    return (
-      <input type="number" data-max="5" data-min="1" value={this.state.rating} data-movie-id={this.state.movie_id} className="rating pull-right"></input>
-    );
+    var content = this.template({
+      rating: this.model.get('rating')
+    });
+
+    this.$el.html(content);
+    return this;
   },
+
+  starChange: function (event) {
+    event.preventDefault();
+    this.rating = $(event.target).data('value');
+    this.model.set('rating', this.rating);
+    this.model.save();
+  },
+
+  starEnter: function (event) {
+    var $hoveredStar = $(event.target);
+    this.model.set('rating', $hoveredStar.data('value'));
+  },
+
+  starExit: function (event) {
+    this.model.set('rating', this.rating);
+  }
 });

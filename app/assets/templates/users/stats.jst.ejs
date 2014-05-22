@@ -1,0 +1,9 @@
+<div>
+  <h2>Progress</h2>
+  <div className="progress progress-striped active">
+    <div className="progress-bar" role="progressbar" aria-valuenow={this.state.complete} aria-valuemin="0" aria-valuemax="100" style={{ width: this.state.complete + '%' }}>
+      <span className="sr-only">{this.state.complete + '% Complete'}</span>
+    </div>
+  </div>
+  You've watched {this.state.ratings} out of {this.state.movies} Disney Movies!
+</div>

@@ -13,7 +13,3 @@ window.App = {
     Backbone.history.start();
   }
 };
-
-$(function () {
-  window.App.initialize();
-});
