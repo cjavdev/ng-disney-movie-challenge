@@ -16,6 +16,10 @@
  *= require_self
  */
 
+span.disneymc-mickey:first-child {
+  display: none;
+}
+
 @import 'bootstrap';
 @import "font-awesome";
 
@@ -39,4 +43,3 @@ span.disneymc-mickey, span.disneymc-mickey-o {
   overflow: scroll;
   max-height: 500px;
 }
-
