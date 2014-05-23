@@ -20,13 +20,27 @@ App.Views.MovieList = Backbone.View.extend({
     this.removeSubviews();
     var content = this.template();
     this.$el.html(content);
+
     this.renderSubviews();
     this.renderCurrentMovie();
+    this.renderUserStats();
     return this;
+  },
+
+  renderUserStats: function () {
+    var view = new App.Views.UserStats({
+      model: App.stats
+    });
+
+    this.$('#stats-detail').html(view.render().$el);
   },
 
   renderCurrentMovie: function () {
     if(!this.currentMovieId) {
+      if(this.collection.length > 0) {
+        this.currentMovieId = this.collection.first().id;
+        this.renderCurrentMovie();
+      }
       return;
     }
 

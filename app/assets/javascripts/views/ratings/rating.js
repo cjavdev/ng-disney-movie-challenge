@@ -1,4 +1,4 @@
-/*globals App, Backbone, JST */
+/*globals App, Backbone, JST, $ */
 'use strict';
 
 App.Views.MickeyRating = Backbone.View.extend({
@@ -28,8 +28,12 @@ App.Views.MickeyRating = Backbone.View.extend({
   starChange: function (event) {
     event.preventDefault();
     this.rating = $(event.target).data('value');
-    this.model.set('rating', this.rating);
-    this.model.save();
+    this.model.save({ 'rating': this.rating }, {
+      success: function () {
+        App.movies.get(this.model.get('movie_id')).fetch();
+        App.stats.fetch();
+      }.bind(this)
+    });
   },
 
   starEnter: function (event) {

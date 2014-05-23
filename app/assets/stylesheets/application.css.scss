@@ -34,3 +34,10 @@
 span.disneymc-mickey, span.disneymc-mickey-o {
   float: left;
 }
+
+#movies, #rating-list {
+  overflow: scroll;
+  max-height: 500px;
+}
+
+

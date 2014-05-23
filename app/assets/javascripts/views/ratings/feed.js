@@ -3,6 +3,7 @@
 
 App.Views.RatingFeed = Backbone.View.extend({
   template: JST['ratings/feed'],
+  className: 'col-md-6 col-md-offset-3',
 
   initialize: function () {
     this._subviews = [];

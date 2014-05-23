@@ -4,6 +4,10 @@
 App.Views.MovieDetail = Backbone.View.extend({
   template: JST['movies/detail'],
 
+  initialize: function () {
+    this.listenTo(this.model, 'change:avg_rating', this.render);
+  },
+
   render: function () {
     if(!this.model) {
       return this;

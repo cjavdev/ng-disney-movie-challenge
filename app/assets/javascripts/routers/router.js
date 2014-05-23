@@ -16,7 +16,8 @@ App.Routers.Router = Backbone.Router.extend({
     '': 'index',
     '_=_': 'index',
     'feed': 'feed',
-    'movie/:id': 'showMovie'
+    'movie/:id': 'showMovie',
+    'leaderboard': 'leaderboard'
   },
 
   index: function () {
@@ -41,6 +42,11 @@ App.Routers.Router = Backbone.Router.extend({
       collection: App.ratings
     });
 
+    this._swap(view);
+  },
+
+  leaderboard: function ( ) {
+    var view = new App.Views.Leaderboard();
     this._swap(view);
   },
 

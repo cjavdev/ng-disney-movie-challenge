@@ -1,9 +1,12 @@
-<div>
-  <h2>Progress</h2>
-  <div className="progress progress-striped active">
-    <div className="progress-bar" role="progressbar" aria-valuenow={this.state.complete} aria-valuemin="0" aria-valuemax="100" style={{ width: this.state.complete + '%' }}>
-      <span className="sr-only">{this.state.complete + '% Complete'}</span>
-    </div>
+<h2>Progress</h2>
+<div class="progress progress-striped active">
+  <div class="progress-bar"
+    role="progressbar"
+    aria-valuenow="<%= stats.complete() %>"
+    aria-valuemin="0"
+    aria-valuemax="100"
+    style="width: <%= stats.complete() %>%">
+    <span class="sr-only"><%= stats.complete() %> Complete</span>
   </div>
-  You've watched {this.state.ratings} out of {this.state.movies} Disney Movies!
 </div>
+You've watched <%= stats.get('rating_count') %> out of <%= stats.get('movie_count') %> Disney Movies!
