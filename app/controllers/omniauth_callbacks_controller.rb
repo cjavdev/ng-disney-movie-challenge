@@ -26,7 +26,7 @@ class OmniauthCallbacksController < Devise::OmniauthCallbacksController
         uid: uid,
         token: access_token['credentials']['token'],
         secret: nil,
-        name: access_token[:info][:name],
+        name: access_token[:info][:first_name],
         link: access_token[:info][:urls]['Facebook'],
         image: access_token[:info][:image]
       }
