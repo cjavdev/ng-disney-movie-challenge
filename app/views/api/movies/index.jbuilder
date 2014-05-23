@@ -5,6 +5,7 @@ json.array! @movies do |movie|
   json.imdb_link movie.imdb_link
   json.duration  movie.duration
   json.avg_rating movie.avg_rating
+  json.rating_count movie.rating_count
   json.rating do |rating|
     json.id @ratings[movie.id].try(:id)
     json.movie_id movie.id

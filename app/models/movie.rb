@@ -18,7 +18,7 @@ class Movie < ActiveRecord::Base
   has_many :ratings
 
   def self.with_avg_rating
-    select('movies.*, AVG(ratings.rating) as avg_rating')
+    select('movies.*, AVG(ratings.rating) as avg_rating, COUNT(ratings.id) as rating_count')
       .joins('LEFT OUTER JOIN ratings ON ratings.movie_id = movies.id')
       .group('movies.id')
   end

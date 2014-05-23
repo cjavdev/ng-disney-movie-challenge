@@ -2,7 +2,4 @@
 <p><strong>Duration:</strong> <%= movie.get('duration') %> min</p>
 <p><strong>Released:</strong> <%= moment(movie.get('released_at')).fromNow() %></p>
 <p><strong>Average Rating:</strong> <%= movie.get('avg_rating') %></p>
-<p>
-  <strong>IMDB:</strong>
-  <a href="<%= movie.get('imdb_link') %>"><%= movie.get('imdb_link') %></a>
-</p>
+<p><strong>Total Ratings:</strong> <%= movie.get('rating_count') %></p>
