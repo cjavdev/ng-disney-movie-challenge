@@ -1,4 +1,5 @@
 json.array! @ratings do |rating|
+  next unless rating.user
   json.id rating.id
   json.rating rating.rating
   json.user_id rating.user_id
@@ -6,7 +7,7 @@ json.array! @ratings do |rating|
   json.movie_name rating.movie.try(:name)
   json.user do
     json.id rating.user.id
-    json.name rating.user.try(:name)
-    json.image rating.user.try(:image)
+    json.name rating.user.name
+    json.image rating.user.image
   end
 end

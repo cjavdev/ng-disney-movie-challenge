@@ -4,9 +4,9 @@ module Api
 
     def index
       @ratings = Rating
-      .includes(:movie, user: :authorizations)
-      .order(created_at: :desc)
-      .limit(200)
+        .includes(:movie, user: :authorizations)
+        .order(created_at: :desc)
+        .limit(200)
       render :index
     end
 
