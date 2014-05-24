@@ -34,11 +34,11 @@ class User < ActiveRecord::Base
   end
 
   def name
-    fb_auth.name
+    fb_auth.name || Faker::Name.name
   end
 
   def image
-    fb_auth.image
+    fb_auth.image || ['http://i476.photobucket.com/albums/rr125/michela161270/Animated%20giff/1295271ykiafyirse.gif', 'http://i476.photobucket.com/albums/rr125/michela161270/Animated%20giff/13236301026p4969.gif'].sample
   end
 
   def rating_of(movie)
