@@ -6,7 +6,7 @@ json.array! @ratings do |rating|
   json.movie_name rating.movie.try(:name)
   json.user do
     json.id rating.user.id
-    json.name rating.user.name
-    json.image rating.user.image
+    json.name rating.user.try(:name)
+    json.image rating.user.try(:image)
   end
 end

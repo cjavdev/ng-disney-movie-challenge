@@ -22,6 +22,7 @@ class OmniauthCallbacksController < Devise::OmniauthCallbacksController
     when 'Facebook'
       uid = access_token['uid']
       email = access_token[:info][:email]
+      p access_token[:info]
       auth_attr = {
         uid: uid,
         token: access_token['credentials']['token'],
