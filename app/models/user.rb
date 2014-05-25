@@ -29,6 +29,14 @@ class User < ActiveRecord::Base
   has_many :ratings, dependent: :destroy, inverse_of: :user
   has_many :movies, through: :ratings
 
+  def self.with_most_ratings(n)
+    select('users.*, COUNT(ratings.id) as rating_count')
+      .joins(:ratings)
+      .group('users.id')
+      .order('COUNT(ratings.id) DESC')
+      .limit(n)
+  end
+
   def fb_auth
     @fb_auth ||= authorizations.where(provider: :Facebook).first
   end
