@@ -1,5 +1,6 @@
-DisneyMovieChallenge.Collections.Leaderboards = Backbone.Collection.extend({
+/*globals App, Backbone */
+'use strict';
 
-  model: DisneyMovieChallenge.Models.Leaderboard
-
+App.Collections.Leaderboards = Backbone.Collection.extend({
+  model: App.Models.Leaderboard
 });

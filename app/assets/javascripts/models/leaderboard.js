@@ -1,3 +1,6 @@
-DisneyMovieChallenge.Models.Leaderboard = Backbone.Model.extend({
+/*globals App, Backbone */
+'use strict';
+
+App.Models.Leaderboard = Backbone.Model.extend({
 
 });
