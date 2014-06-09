@@ -1,5 +1,7 @@
 module Api
   class StatsController < ApiController
+    before_action :authenticate_user!
+
     def index
       render json: current_user.stats
     end
