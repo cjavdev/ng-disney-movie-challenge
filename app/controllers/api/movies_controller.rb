@@ -1,15 +1,10 @@
 module Api
   class MoviesController < ApiController
-    # def index
-    #   @movies = Movie.with_avg_rating.order(released_at: :asc)
-    #   @ratings = {}
-    #   current_user.ratings.map { |r| @ratings[r.movie_id] = r }
-    #   render :index
-    # end
-
     def index
       @movies = Movie.with_avg_rating.order(released_at: :asc)
-      render json: @movies
+      @ratings = {}
+      current_user.ratings.map { |r| @ratings[r.movie_id] = r }
+      render :index
     end
 
     def show
