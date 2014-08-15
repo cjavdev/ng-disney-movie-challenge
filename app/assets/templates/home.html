@@ -1,0 +1,14 @@
+<div class="col-md-6 col-md-offset-2" ng-controller="MovieList">
+  <h1>Movies</h1>
+  <div id="movies" class="list-group">
+    <div ng-repeat="movie in movies" class="list-group-item">
+      <h4 class="list-group-item-heading">
+        {{ movie }}
+      </h4>
+
+      <p class="list-group-item-text">
+        {{moment().year()}}
+      </p>
+    </div>
+  </div>
+</div>

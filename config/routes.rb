@@ -18,4 +18,6 @@ Rails.application.routes.draw do
     resources :ratings
     resources :stats, only: [:index, :show]
   end
+
+  get '*path' => 'static_pages#root'
 end

@@ -13,13 +13,10 @@
 //= require jquery
 //= require jquery_ujs
 //= require bootstrap
-//= require underscore
-//= require backbone
+//= require angular
+//= require angular-moment
+//= require angular-route
+//= require angular-rails-templates
 //= require moment
-//= require app
 //= require_tree ../templates
-//= require_tree ./models
-//= require_tree ./collections
-//= require_tree ./views
-//= require_tree ./routers
 //= require_tree .
